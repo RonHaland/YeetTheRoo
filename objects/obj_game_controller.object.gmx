@@ -184,13 +184,18 @@ if (instance_exists(obj_roo)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room == rm_upgrades){
+            <string>var buttonShift = -64;
+if (room == rm_upgrades){
     var brk = global.upgrades[? "Broccoli"];
     sam = instance_create(224,896, obj_sam);
-    if (brk &lt; 4){
-        btnBroc = instance_create(-64+256,256,obj_button);
+    if (brk &lt; 5){
+        btnBroc = instance_create(buttonShift+256,256,obj_button);
         btnBroc.icon = spr_broccoli;
         btnBroc.text = "Broccoli#Stronger YEET";
+        if (brk == 4){
+            btnBroc.icon = spr_jade_broccoli;
+            btnBroc.text = "Broccoli#JADE infused";
+        }
         btnBroc.upgrade = "Broccoli";
         btnBroc.cost = get_cost("Broccoli");
     }
@@ -198,23 +203,94 @@ if (instance_exists(obj_roo)){
     var suit = global.upgrades[? "Suit"];
     
     if (suit == 0){
-        btnSuit = instance_create(-64+256*2.5,256,obj_button);
+        btnSuit = instance_create(buttonShift+256*2.5,256,obj_button);
         btnSuit.icon = spr_duck;
         btnSuit.text = "Duck suit#Aero upgrade#unlocks more upgrades";
         btnSuit.upgrade = "Suit";
         btnSuit.cost = get_cost("Suit");
+    } else if (suit &lt; 4){
+        btnSuit = instance_create(buttonShift+256*2.5,256,obj_button);
+        btnSuit.icon = spr_duck;
+        btnSuit.text = "Duck suit#Aero upgrade";
+        btnSuit.upgrade = "Suit";
+        btnSuit.cost = get_cost("Suit");
     }
-    
+        
+    var wings = global.upgrades[? "Wings"];
+    if (suit &gt; 0 &amp;&amp; wings &lt; 4){
+        btnSuit = instance_create(buttonShift+256*4,256,obj_button);
+        btnSuit.icon = spr_flippers;
+        btnSuit.text = '"Wings"#Glide more';
+        btnSuit.upgrade = "Wings";
+        btnSuit.cost = get_cost("Wings");
+    }
+        
+    var flippers = global.upgrades[? "Flippers"];
+    if (suit &gt; 0 &amp;&amp; flippers &lt; 4){
+        btnSuit = instance_create(buttonShift+256*5.5,256,obj_button);
+        btnSuit.icon = spr_flippers;
+        btnSuit.text = "Flippers#Press Space to JUMP";
+        btnSuit.upgrade = "Flippers";
+        btnSuit.cost = get_cost("Flippers");
+    }
     var flt = global.upgrades[? "Floaters"];
     
     if (flt &lt; 4){
-        btnFlt = instance_create(-64+256*7,256,obj_button);
+        btnFlt = instance_create(buttonShift+256*7,256,obj_button);
         btnFlt.icon = spr_floaters;
         btnFlt.text = "Floaters#More Bounce";
         btnFlt.upgrade = "Floaters";
         btnFlt.cost = get_cost("Floaters");
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>SaveGame</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ini_open("savedata.ini");
+ini_write_real("save", "Broccoli", global.upgrades[? "Broccoli"]);
+ini_write_real("save", "Suit", global.upgrades[? "Suit"]);
+ini_write_real("save", "Wings", global.upgrades[? "Wings"]);
+ini_write_real("save", "Flippers", global.upgrades[? "Flippers"]);
+ini_write_real("save", "Floaters", global.upgrades[? "Floaters"]);
+ini_write_real("save", "Cash", global.cash);
+ini_close();
 </string>
           </argument>
         </arguments>
@@ -268,6 +344,15 @@ ds_map_add(global.upgrades, "Wings", 0);
 ds_map_add(global.upgrades, "Flippers", 0);
 ds_map_add(global.upgrades, "Floaters", 0);
 room_goto_next();
+
+ini_open("savedata.ini");
+global.upgrades[? "Broccoli"] = ini_read_real("save", "Broccoli", 0);
+global.upgrades[? "Suit"] = ini_read_real("save", "Suit", 0);
+global.upgrades[? "Wings"] = ini_read_real("save", "Wings", 0);
+global.upgrades[? "Flippers"] = ini_read_real("save", "Flippers", 0);
+global.upgrades[? "Floaters"] = ini_read_real("save", "Floaters", 0);
+global.cash = ini_read_real("save", "Cash", 0);
+ini_close();
 </string>
           </argument>
         </arguments>

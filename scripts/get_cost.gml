@@ -17,11 +17,11 @@ if (name == "Broccoli"){
         case 1: 
             return 500;
         case 2: 
-            return 1000;
+            return 1200;
         case 3: 
-            return 1700;
+            return 3000;
         case 4: 
-            return 3500;
+            return 10000;
     }
 }
 
@@ -67,9 +67,9 @@ if (name == "Floaters"){
         case 2: 
             return 1000;
         case 3: 
-            return 1700;
+            return 1500;
         case 4: 
-            return 3500;
+            return 3000;
     }
 }
 
@@ -77,13 +77,13 @@ if (name == "Flippers"){
     val = global.upgrades[? "Flippers"];
     switch (val){
         case 0: 
-            return 0;
+            return 350;
         case 1: 
-            return 500;
+            return 600;
         case 2: 
-            return 1000;
+            return 1200;
         case 3: 
-            return 1700;
+            return 2000;
         case 4: 
             return 3500;
     }

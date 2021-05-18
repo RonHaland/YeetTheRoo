@@ -20,8 +20,11 @@
     <sprites name="icons">
       <sprite>sprites\spr_icon_default</sprite>
       <sprite>sprites\spr_broccoli</sprite>
+      <sprite>sprites\spr_jade_broccoli</sprite>
       <sprite>sprites\spr_duck</sprite>
+      <sprite>sprites\spr_wings</sprite>
       <sprite>sprites\spr_floaters</sprite>
+      <sprite>sprites\spr_flippers</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

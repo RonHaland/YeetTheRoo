@@ -22,6 +22,8 @@ if (name == "topLaunchSpeed"){
             return 120;
         case 4: 
             return 200;
+        case 5: 
+            return 400;
     }
 }
 
@@ -31,13 +33,15 @@ if (name == "speedBonus"){
         case 0: 
             return 0.8;
         case 1: 
-            return 1.05;
+            return 1.25;
         case 2: 
-            return 1.5;
+            return 1.75;
         case 3: 
-            return 2;
+            return 2.5;
         case 4: 
-            return 3;
+            return 5;
+        case 5: 
+            return 10;
     }
 }
 

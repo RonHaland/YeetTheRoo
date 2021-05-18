@@ -181,7 +181,7 @@ if (steps == 0) {
 }
 
 if (isLaunched){
-    vspeed = min(20,vspeed+(0.15*(1-glide)));
+    vspeed = min(35,vspeed+(0.15*(1-glide)));
     hspeed = max(0, hspeed-drag*(1-glide))
 }
 

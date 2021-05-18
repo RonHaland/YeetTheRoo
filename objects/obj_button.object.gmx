@@ -57,7 +57,6 @@ cost = 0;
 if (upgrade == "Suit" &amp;&amp; global.upgrades[? "Suit"] == 0 &amp;&amp; global.cash &gt;= cost){
     global.upgrades[? upgrade] += 1;
     global.upgrades[? "Wings"] += 1;
-    global.upgrades[? "Flippers"] += 1;
     global.cash -= cost
 }
 else if ( global.cash &gt;= cost){
