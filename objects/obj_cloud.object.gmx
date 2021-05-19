@@ -32,7 +32,6 @@ myW = 1.2 - random(0.4);
 myH = 1.2 - random(0.4);
 myAlpha = 0.2 + random(0.5);
 
-show_debug_message(string(myW) + ", " + string(myH) + ", " + string(myAlpha) )
 </string>
           </argument>
         </arguments>

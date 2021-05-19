@@ -86,7 +86,7 @@ if (instance_exists(obj_roo)){
             closest.speed = min(closest.cumulativeMomentum * closest.speedBonus, closest.topLaunchSpeed);
             closest.direction = point_direction(closest.lastX,closest.lastY,closest.x,closest.y);
             closest.isLaunched = 1;
-            show_debug_message(closest.speed);
+            //show_debug_message(closest.speed);
         }
         isGrabbing = 0;
         closest.isGrabbed = 0;
@@ -145,7 +145,7 @@ if (instance_exists(obj_roo)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_character, 5,x,y);
+            <string>draw_sprite(spr_character, global.samImg,x,y);
 </string>
           </argument>
         </arguments>
