@@ -113,14 +113,14 @@ if (name == "jumpSpeed"){
     val = global.upgrades[? "Flippers"];
     switch (val){
         case 0: 
-            return 20;
+            return 22.5;
         case 1: 
-            return 30;
+            return 25;
         case 2: 
-            return 40;
+            return 27.5;
         case 3: 
-            return 50;
+            return 30;
         case 4: 
-            return 65;
+            return 32.5;
     }
 }

@@ -25,6 +25,7 @@
       <sprite>sprites\spr_wings</sprite>
       <sprite>sprites\spr_floaters</sprite>
       <sprite>sprites\spr_flippers</sprite>
+      <sprite>sprites\spr_reset</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -38,6 +39,7 @@
   <fonts name="fonts">
     <font>fonts\ft_normal</font>
     <font>fonts\ft_normal_bold</font>
+    <font>fonts\ft_big_bold</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_arm</object>

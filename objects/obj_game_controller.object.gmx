@@ -242,6 +242,12 @@ if (room == rm_upgrades){
         btnFlt.upgrade = "Floaters";
         btnFlt.cost = get_cost("Floaters");
     }
+    
+    btnReset = instance_create(buttonShift+256*7,room_height-256,obj_button);
+    btnReset.icon = spr_reset;
+    btnReset.text = "Reset game#*snap*";
+    btnReset.upgrade = "Reset";
+    btnReset.cost = -1;
 }
 </string>
           </argument>
@@ -290,6 +296,8 @@ ini_write_real("save", "Wings", global.upgrades[? "Wings"]);
 ini_write_real("save", "Flippers", global.upgrades[? "Flippers"]);
 ini_write_real("save", "Floaters", global.upgrades[? "Floaters"]);
 ini_write_real("save", "Cash", global.cash);
+ini_write_real("save", "MaxL", global.maxL);
+ini_write_real("save", "MaxH", global.maxH);
 ini_close();
 </string>
           </argument>
@@ -352,6 +360,8 @@ global.upgrades[? "Wings"] = ini_read_real("save", "Wings", 0);
 global.upgrades[? "Flippers"] = ini_read_real("save", "Flippers", 0);
 global.upgrades[? "Floaters"] = ini_read_real("save", "Floaters", 0);
 global.cash = ini_read_real("save", "Cash", 0);
+global.maxL = ini_read_real("save", "MaxL", 0);
+global.maxH = ini_read_real("save", "MaxH", 0);
 ini_close();
 </string>
           </argument>
@@ -376,6 +386,8 @@ ini_close();
           <argument>
             <kind>1</kind>
             <string>draw_set_font(ft_normal)
+draw_set_halign(fa_right);
+draw_text(room_width-20,20,"Monies: " + string(global.cash))
 draw_set_halign(fa_left);
 draw_text(20,20,"FPS: " + string(fps))
 
@@ -386,8 +398,11 @@ if (room == rm_play){
     draw_text(20,100,"Length: " + string(roo.l) + "/" + string(global.maxL))
     draw_text(20,115,"Height: " + string(roo.h) + "/" + string(global.maxH))
 }
-draw_set_halign(fa_right);
-draw_text(room_width-20,20,"Monies: " + string(global.cash))
+else if (room == rm_upgrades){
+    draw_set_font(ft_big_bold)
+    draw_set_halign(fa_middle)
+    draw_text(room_width/2, 96, "UPGRADES")
+}
 </string>
           </argument>
         </arguments>

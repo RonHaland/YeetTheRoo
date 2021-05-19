@@ -11,47 +11,6 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>isGrabbed = 0;
-isLaunched = 0;
-steps = 10;
-currentStep = 0;
-for (var i = 0; i &lt; 5; i++){
-    prevX[i] = 0;
-    prevY[i] = 0;
-}
-cumulativeMomentum = 0;
-cumulativeDirection = 0;
-
-animUp = 1;
-imgInd = 0;
-rot = 0;
-rotSpeed = 0;
-
-l = 0; //length
-h = 0; //height
-
-isDuck = global.upgrades[? "Suit"] &gt; 0;
-hasFloaters = global.upgrades[? "Floaters"] &gt; 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>605</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -127,6 +86,47 @@ if (variable_global_exists("upgrades")){*/
           <argument>
             <kind>1</kind>
             <string>GAME STUFFS</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>isGrabbed = 0;
+isLaunched = 0;
+steps = 10;
+currentStep = 0;
+for (var i = 0; i &lt; 5; i++){
+    prevX[i] = 0;
+    prevY[i] = 0;
+}
+cumulativeMomentum = 0;
+cumulativeDirection = 0;
+
+animUp = 1;
+imgInd = 0;
+rot = 0;
+rotSpeed = 0;
+
+l = 0; //length
+h = 0; //height
+
+isDuck = global.upgrades[? "Suit"] &gt; 0;
+hasFloaters = global.upgrades[? "Floaters"] &gt; 0;
+</string>
           </argument>
         </arguments>
       </action>

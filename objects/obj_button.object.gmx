@@ -57,13 +57,31 @@ cost = 0;
 if (upgrade == "Suit" &amp;&amp; global.upgrades[? "Suit"] == 0 &amp;&amp; global.cash &gt;= cost){
     global.upgrades[? upgrade] += 1;
     global.upgrades[? "Wings"] += 1;
-    global.cash -= cost
+    global.cash -= cost;
 }
-else if ( global.cash &gt;= cost){
+else if ( cost &gt; -1 &amp;&amp; global.cash &gt;= cost){
     global.upgrades[? upgrade] += 1;
-    global.cash -= cost
+    global.cash -= cost;
 }
-room_restart();
+
+if (upgrade == "Reset"){
+    upgrade = "ResetConfirm";
+    text = "Reset#Confirm reset";
+}
+else if (upgrade == "ResetConfirm"){
+    global.upgrades[? "Broccoli"] = 0;
+    global.upgrades[? "Suit"] = 0;
+    global.upgrades[? "Wings"] = 0;
+    global.upgrades[? "Flippers"] = 0;
+    global.upgrades[? "Floaters"] = 0;  
+    global.cash = 0;
+    global.maxL = 0;
+    global.maxH = 0;
+    room_restart();
+}
+else {
+    room_restart();
+}
 </string>
           </argument>
         </arguments>
@@ -94,7 +112,8 @@ draw_set_color(c_black);
 draw_set_font(ft_normal);
 draw_text(x,y+64, text);
 draw_set_font(ft_normal_bold);
-draw_text(x,y+24, "$"+string(cost));
+if (cost &gt; -1)
+    draw_text(x,y+24, "$"+string(cost));
 
 draw_sprite(icon, 0, x,y-32)
 </string>
