@@ -3,6 +3,25 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles">
+    <datafile>
+      <name>index.html</name>
+      <exists>-1</exists>
+      <size>2958</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>32</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>index.html</filename>
+    </datafile>
+  </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -27,6 +46,7 @@
       <sprite>sprites\spr_flippers</sprite>
       <sprite>sprites\spr_reset</sprite>
     </sprites>
+    <sprite>sprites\spr_test</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background</background>
