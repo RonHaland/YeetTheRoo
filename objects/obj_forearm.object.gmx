@@ -41,7 +41,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_arm, 1, x, y, 1, 1, dir, c_white, 1);
+            <string>var img = 1;
+if (global.samImg == 7)
+    img = 3;
+draw_sprite_ext(spr_arm, img, x, y, 1, 1, dir, c_white, 1);
 </string>
           </argument>
         </arguments>

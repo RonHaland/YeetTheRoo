@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>dir = 0;
+
+char = instance_find(obj_sam,0);
 </string>
           </argument>
         </arguments>
@@ -48,7 +50,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(spr_arm, 0, x, y, 1, 1, dir, c_white, 1);
+            <string>var img = 0;
+if (global.samImg == 7)
+img = 2;
+draw_sprite_ext(spr_arm, img, x, y, 1, 1, dir, c_white, 1);
 </string>
           </argument>
         </arguments>

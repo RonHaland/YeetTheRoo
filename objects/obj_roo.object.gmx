@@ -121,6 +121,10 @@ imgInd = 0;
 rot = 0;
 rotSpeed = 0;
 
+tvspeed = 0;
+thspeed = 0;
+tspeed = 0
+
 l = 0; //length
 h = 0; //height
 
@@ -149,6 +153,7 @@ hasFloaters = global.upgrades[? "Floaters"] &gt; 0;
           <argument>
             <kind>1</kind>
             <string>steps -= 1;
+var fpsX = 150/fps; //fps speed muliplier
 
 if (steps == 0) { 
     steps = 3; 
@@ -181,8 +186,15 @@ if (steps == 0) {
 }
 
 if (isLaunched){
-    vspeed = min(35,vspeed+(0.15*(1-glide)));
-    hspeed = max(0, hspeed-drag*(1-glide))
+    //
+    tvspeed = min(35,tvspeed+(0.15*(1-glide))*fpsX);
+    thspeed = max(0, thspeed-drag*(1-glide)*fpsX);
+    vspeed = tvspeed*fpsX;
+    hspeed = thspeed*fpsX;
+    tspeed = sqrt(sqr(thspeed)+sqr(tvspeed));
+    
+    //vspeed = min(35,vspeed+(0.15*(1-glide)));
+    //hspeed = max(0, hspeed-drag*(1-glide));
 }
 
 
@@ -216,7 +228,7 @@ else if (!animUp &amp;&amp; imgInd &lt;= 0.5){
 }
 
 imgInd += (-1 + (animUp * 2))*0.1*isLaunched;
-if (speed &lt; 50){
+if (tspeed &lt; 50){
     if (isDuck){
         draw_sprite_ext(spr_roo_duck, imgInd, x, y, 1, 1, rot, c_white, 1);
     }else{
@@ -242,6 +254,9 @@ if (!isGrabbed &amp;&amp; !isLaunched){
     draw_set_valign(fa_bottom);
     draw_set_font(ft_normal_bold);
     draw_text(x, y-60, "Click to#Grab me");
+} else{
+
+    draw_text(x, y-60, string(tspeed));
 }
 </string>
           </argument>
@@ -268,7 +283,7 @@ if (!isGrabbed &amp;&amp; !isLaunched){
             <string>if (keyboard_check(vk_space) &amp;&amp; isLaunched){
     if (jumps &gt; 0) {
         jumps -= 1;
-        {vspeed += -jumpSpeed}
+        {tvspeed += -jumpSpeed}
     }
 }
 </string>

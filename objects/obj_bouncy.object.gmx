@@ -88,9 +88,9 @@
             <string>if (hit == 0){
     hit = 1;
     with (other){
-        vspeed = -abs(vspeed * bounce)
-        if (hspeed &lt; 20)
-            hspeed += 3.5;
+        tvspeed = -abs(tvspeed * bounce)
+        if (thspeed &lt; 20)
+            thspeed += 3.5;
     }
 }
 </string>

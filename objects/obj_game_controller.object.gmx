@@ -66,6 +66,8 @@ konamiCode[10] = vk_enter
           <argument>
             <kind>1</kind>
             <string>if (room == rm_play){
+    if (roo.h &gt; topHeight)
+        topHeight = roo.h
     if (roo.h &gt; global.maxH)
         global.maxH = roo.h
     if (gameOverState){
@@ -179,6 +181,26 @@ if (instance_exists(obj_roo)){
     <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>Upgrade-Buttons</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -196,7 +218,7 @@ if (instance_exists(obj_roo)){
             <string>var buttonShift = -64;
 if (room == rm_upgrades){
     var brk = global.upgrades[? "Broccoli"];
-    sam = instance_create(224,896, obj_sam);
+    sam = instance_create(416,896, obj_sam);
     if (brk &lt; 5){
         btnBroc = instance_create(buttonShift+256,256,obj_button);
         btnBroc.icon = spr_broccoli;
@@ -312,6 +334,47 @@ ini_close();
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>RoundReset</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>topHeight = 100;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="2">
       <action>
@@ -395,23 +458,50 @@ ini_close();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(ft_normal_bold)
+            <string>draw_set_font(ft_normal_bold);
 draw_set_halign(fa_right);
 draw_text(room_width-40,40,"Monies: $" + string(global.cash))
 draw_set_halign(fa_left);
 draw_text(40,40,"FPS: " + string(fps))
 
-if (room == rm_start){
+
+
+
+if (room == rm_play){
     draw_text(20,60,"H-Spd: " + string(roo.hspeed))
     draw_text(20,75,"V-Spd: " + string(roo.vspeed))
     
-    draw_text(20,100,"Length: " + string(roo.l) + "/" + string(global.maxL))
-    draw_text(20,115,"Height: " + string(roo.h) + "/" + string(global.maxH))
+    //draw_text(20,100,"Length: " + string(roo.l) + "/" + string(global.maxL))
+    //draw_text(20,115,"Height: " + string(roo.h) + "/" + string(global.maxH))
+    
+    //draw score
+    if (roo.isLaunched){
+        draw_set_color(c_black);
+        draw_set_valign(fa_middle);
+        draw_set_halign(fa_center);
+        draw_set_font(ft_big_bold);
+        draw_text(room_width/2,room_height/6, string(round(roo.l/5)));
+    }
+        
+    //draw heightLine
+    draw_set_color(c_black);
+    draw_set_valign(fa_bottom);
+    draw_set_halign(fa_right);
+    draw_set_font(ft_normal);
+    var lineX = room_width - 40;
+    draw_line(lineX, room_height - 40, lineX, room_height - 240);
+    draw_line(lineX-5, room_height - 40, lineX+5, room_height - 40);
+    draw_line(lineX-5, room_height - 240, lineX+5, room_height - 240);
+    draw_text(lineX+10, room_height - 240, string(round(topHeight)));
+    var currentHeight = 200*(topHeight-max(0,roo.h-16))/topHeight;
+    //draw_text(lineX+10, room_height - 260, string(currentHeight));
+    draw_sprite_ext(spr_arrow, 2, lineX, room_height - 240 + currentHeight, .5, .5, 0, c_white, 1);
+    
 }
 else if (room == rm_upgrades){
-    draw_set_font(ft_big_bold)
-    draw_set_halign(fa_middle)
-    draw_text(room_width/2, 96, "UPGRADES")
+    draw_set_font(ft_big_bold);
+    draw_set_halign(fa_middle);
+    draw_text(room_width/2, 96, "UPGRADES");
     
     var charName = "Sam";
     if (global.samImg == 6){
@@ -449,7 +539,7 @@ else if (room == rm_upgrades){
     if (keyboard_check(konamiCode[konamiCodeProgress]) || keyboard_check(ord(konamiCode[konamiCodeProgress]))){
         if (konamiCodeProgress + 1 &gt;= array_length_1d(konamiCode)){
             konamiCodeProgress = 0;
-            global.samImg = 6
+            global.samImg = 5+ceil(random(2));
         }
         else{
             konamiCodeProgress++
