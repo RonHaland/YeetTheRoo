@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="1" name="datafiles">
+  <datafiles number="2" name="datafiles">
     <datafile>
       <name>index.html</name>
       <exists>-1</exists>
@@ -26,7 +26,6 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_arm</sprite>
-    <sprite>sprites\spr_character</sprite>
     <sprite>sprites\spr_character_ext</sprite>
     <sprite>sprites\spr_roo</sprite>
     <sprite>sprites\spr_roo_duck</sprite>
@@ -57,6 +56,7 @@
   <scripts name="scripts">
     <script>scripts\get_stat.gml</script>
     <script>scripts\get_cost.gml</script>
+    <script>scripts\set_display.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\ft_normal</font>

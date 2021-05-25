@@ -21,7 +21,7 @@ if (name == "Broccoli"){
         case 3: 
             return 3000;
         case 4: 
-            return 10000;
+            return 20000;
     }
 }
 

@@ -58,8 +58,13 @@ myAlpha = 0.2 + random(0.5);
     var roo = instance_find(obj_roo, 0);
     if (x &lt; - 200 || (roo.vspeed &gt; 0 &amp;&amp; y &lt; -150) || (roo.vspeed &lt; 0 &amp;&amp; y &gt; room_height+150)){
         //if outside of room "behind player"
-        x = room_width + 200 - ((room_width/2)*(abs(roo.vspeed)&gt;10));
-        y = -200 + (room_height+400)*(roo.vspeed&gt;0)
+        var charDir = roo.direction;
+        
+        x = roo.x + lengthdir_x(room_width*.8, charDir);
+        y = lengthdir_y(room_width*.8, charDir);
+        var rdmLength = irandom(room_height*1.5) - 1.5*room_height/2;
+        x = x + lengthdir_x(rdmLength, direction-90);
+        y = y + lengthdir_y(rdmLength, direction-90);
         
         myImg = random(sprite_get_number(sprite_index));
 

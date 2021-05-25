@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>jade = 0;
 
+
 roo = noone;
 isTracking = 0;
 gameOverState = 0;
@@ -250,7 +251,7 @@ if (room == rm_upgrades){
     var wings = global.upgrades[? "Wings"];
     if (suit &gt; 0 &amp;&amp; wings &lt; 4){
         btnSuit = instance_create(buttonShift+256*4,256,obj_button);
-        btnSuit.icon = spr_flippers;
+        btnSuit.icon = spr_wings;
         btnSuit.text = '"Wings"#Glide more';
         btnSuit.upgrade = "Wings";
         btnSuit.cost = get_cost("Wings");
@@ -413,7 +414,10 @@ ini_close();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.cash = 25000;
+            <string>randomize();
+//set_display();
+
+global.cash = 25000;
 global.maxL = 0;
 global.maxH = 0;
 global.samImg = 5;
@@ -462,14 +466,14 @@ ini_close();
 draw_set_halign(fa_right);
 draw_text(room_width-40,40,"Monies: $" + string(global.cash))
 draw_set_halign(fa_left);
-draw_text(40,40,"FPS: " + string(fps))
+draw_text(40,40,"FPS: " + string(fps));
 
 
 
 
 if (room == rm_play){
-    draw_text(20,60,"H-Spd: " + string(roo.hspeed))
-    draw_text(20,75,"V-Spd: " + string(roo.vspeed))
+    //draw_text(20,60,"H-Spd: " + string(roo.hspeed))
+    //draw_text(20,75,"V-Spd: " + string(roo.vspeed))
     
     //draw_text(20,100,"Length: " + string(roo.l) + "/" + string(global.maxL))
     //draw_text(20,115,"Height: " + string(roo.h) + "/" + string(global.maxH))
