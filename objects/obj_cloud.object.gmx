@@ -72,6 +72,12 @@ myAlpha = 0.2 + random(0.5);
         myW = 1.2 - random(0.4);
         myH = 1.2 - random(0.4);
         myAlpha = 0.2 + random(0.5);
+        
+        if (background_y[0]&gt;-room_height/2){
+            if (y&gt;(background_y[0]+room_height/2)){
+                y -= room_height/2;
+            }
+        }
     }
 }
 </string>

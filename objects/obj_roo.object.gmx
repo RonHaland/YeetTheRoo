@@ -52,6 +52,7 @@ if (variable_global_exists("upgrades")){*/
     drag = get_stat("drag");                    //reduction in horizontal speed
     glide = get_stat("glide");                  //gravity and drag reduction multiplier 0 - normal, 1 - no gravity :O
     bounce = get_stat("bounce");                //multiplier to speed on bounce
+    tVel = get_stat("tVelocity");               //max downwards speed.
     
     jumps = get_stat("jumps");                  //mid air jumps
     jumpSpeed = get_stat("jumpSpeed");          //mid air jump vertical speed
@@ -129,7 +130,10 @@ l = 0; //length
 h = 0; //height
 
 isDuck = global.upgrades[? "Suit"] &gt; 0;
-hasFloaters = global.upgrades[? "Floaters"] &gt; 0;
+isGlue = global.upgrades[? "Suit"] == 5;
+hasFloaties = global.upgrades[? "Floaties"] &gt; 0;
+hasJadeFloaties = global.upgrades[? "Floaties"] == 5;
+hasWings = global.upgrades[? "Wings"] &gt; 4;
 </string>
           </argument>
         </arguments>
@@ -187,8 +191,13 @@ if (steps == 0) {
 
 if (isLaunched){
     //
-    tvspeed = min(35,tvspeed+(0.15*(1-glide))*fpsX);
+    tvspeed = min(tVel,tvspeed+(0.15*(1-glide))*fpsX);
     thspeed = max(0, thspeed-drag*(1-glide)*fpsX);
+    if (direction &gt;= 270 &amp;&amp; direction &lt; 340){
+        //speedup
+        thspeed += 0.008 * global.upgrades[? "Wings"] * fpsX;
+        thspeed = min(thspeed, topLaunchSpeed)
+    }
     vspeed = tvspeed*fpsX;
     hspeed = thspeed*fpsX;
     tspeed = sqrt(sqr(thspeed)+sqr(tvspeed));
@@ -229,23 +238,41 @@ else if (!animUp &amp;&amp; imgInd &lt;= 0.5){
 
 imgInd += (-1 + (animUp * 2))*0.1*isLaunched;
 if (tspeed &lt; 50){
+    if (hasWings){
+        draw_sprite_ext(spr_roo_wings, 0, x, y, 1, 1, rot, c_white, 1);
+    }
     if (isDuck){
-        draw_sprite_ext(spr_roo_duck, imgInd, x, y, 1, 1, rot, c_white, 1);
+        if (isGlue)
+            draw_sprite_ext(spr_roo_glue, 0, x, y, 1, 1, direction, c_white, 1);
+        else
+            draw_sprite_ext(spr_roo_duck, imgInd, x, y, 1, 1, rot, c_white, 1);
     }else{
         draw_sprite_ext(spr_roo, imgInd, x, y, 1, 1, rot, c_white, 1);
     }
-    if (hasFloaters){
-        draw_sprite_ext(spr_roo_floaters, imgInd, x, y, 1, 1, rot, c_white, 1);
+    if (hasFloaties){
+        if (hasJadeFloaties)
+            draw_sprite_ext(spr_roo_floaties_jade, imgInd, x, y, 1, 1, rot, c_white, 1);
+        else
+            draw_sprite_ext(spr_roo_floaties, imgInd, x, y, 1, 1, rot, c_white, 1);
     }
 } 
 else {
     if (isDuck){
-        draw_sprite_ext(spr_roo_duck_side, 0, x, y, 1, 1, direction, c_white, 1);
+        if (isGlue)
+            draw_sprite_ext(spr_roo_glue_side, 0, x, y, 1, 1, direction, c_white, 1);
+        else
+            draw_sprite_ext(spr_roo_duck_side, 0, x, y, 1, 1, direction, c_white, 1);
     }else{
         draw_sprite_ext(spr_roo_side, 0, x, y, 1, 1, direction, c_white, 1);
     }
-    if (hasFloaters){
-        draw_sprite_ext(spr_roo_side_floaters, 0, x, y, 1, 1, direction, c_white, 1);
+    if (hasFloaties){
+        if (hasJadeFloaties)
+            draw_sprite_ext(spr_roo_side_floaties_jade, 0, x, y, 1, 1, direction, c_white, 1);
+        else
+            draw_sprite_ext(spr_roo_side_floaties, 0, x, y, 1, 1, direction, c_white, 1);
+    }
+    if (hasWings){
+        draw_sprite_ext(spr_roo_wings_side, 0, x, y, 1, 1, direction, c_white, 1);
     }
 }
 
@@ -284,7 +311,10 @@ if (!isGrabbed &amp;&amp; !isLaunched){
             <string>if (keyboard_check(vk_space) &amp;&amp; isLaunched){
     if (jumps &gt; 0) {
         jumps -= 1;
-        {tvspeed += -jumpSpeed}
+        tvspeed += -jumpSpeed
+        if (global.upgrades[? "Flippers"] == 5){
+            thspeed += 10;
+        } 
     }
 }
 </string>

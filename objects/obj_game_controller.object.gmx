@@ -240,39 +240,51 @@ if (room == rm_upgrades){
         btnSuit.text = "Duck suit#Aero upgrade#unlocks more upgrades";
         btnSuit.upgrade = "Suit";
         btnSuit.cost = get_cost("Suit");
-    } else if (suit &lt; 4){
+    } else if (suit &lt; 5){
         btnSuit = instance_create(buttonShift+256*2.5,256,obj_button);
         btnSuit.icon = spr_duck;
         btnSuit.text = "Duck suit#Aero upgrade";
         btnSuit.upgrade = "Suit";
         btnSuit.cost = get_cost("Suit");
+        if (suit == 4){
+            btnSuit.icon = spr_glueba;
+            btnSuit.text = "Cover yourself in#glue for optimal#aerodynamic performance";
+        }
     }
         
     var wings = global.upgrades[? "Wings"];
-    if (suit &gt; 0 &amp;&amp; wings &lt; 4){
+    if (suit &gt; 0 &amp;&amp; wings &lt; 5){
         btnSuit = instance_create(buttonShift+256*4,256,obj_button);
         btnSuit.icon = spr_wings;
         btnSuit.text = '"Wings"#Glide more';
         btnSuit.upgrade = "Wings";
         btnSuit.cost = get_cost("Wings");
+        if(wings == 4){
+            btnSuit.icon = spr_angel_wings;
+            btnSuit.text = 'Actual wings';
+        }
     }
         
     var flippers = global.upgrades[? "Flippers"];
-    if (suit &gt; 0 &amp;&amp; flippers &lt; 4){
+    if (suit &gt; 0 &amp;&amp; flippers &lt; 5){
         btnSuit = instance_create(buttonShift+256*5.5,256,obj_button);
         btnSuit.icon = spr_flippers;
         btnSuit.text = "Flippers#Press Space to JUMP";
         btnSuit.upgrade = "Flippers";
         btnSuit.cost = get_cost("Flippers");
     }
-    var flt = global.upgrades[? "Floaters"];
+    var flt = global.upgrades[? "Floaties"];
     
-    if (flt &lt; 4){
+    if (flt &lt; 5){
         btnFlt = instance_create(buttonShift+256*7,256,obj_button);
-        btnFlt.icon = spr_floaters;
-        btnFlt.text = "Floaters#More Bounce";
-        btnFlt.upgrade = "Floaters";
-        btnFlt.cost = get_cost("Floaters");
+        btnFlt.icon = spr_floaties;
+        btnFlt.text = "Floaties#More Bounce";
+        btnFlt.upgrade = "Floaties";
+        btnFlt.cost = get_cost("Floaties");
+        if (flt == 4){
+            btnFlt.icon = spr_floaties_glow;
+            btnFlt.text = "Jade Floaties#More Bounce";
+        }
     }
     
     btnReset = instance_create(buttonShift+256*7,room_height-256,obj_button);
@@ -326,7 +338,7 @@ ini_write_real("save", "Broccoli", global.upgrades[? "Broccoli"]);
 ini_write_real("save", "Suit", global.upgrades[? "Suit"]);
 ini_write_real("save", "Wings", global.upgrades[? "Wings"]);
 ini_write_real("save", "Flippers", global.upgrades[? "Flippers"]);
-ini_write_real("save", "Floaters", global.upgrades[? "Floaters"]);
+ini_write_real("save", "Floaties", global.upgrades[? "Floaties"]);
 ini_write_real("save", "Cash", global.cash);
 ini_write_real("save", "MaxL", global.maxL);
 ini_write_real("save", "MaxH", global.maxH);
@@ -427,7 +439,7 @@ ds_map_add(global.upgrades, "Broccoli", 0);
 ds_map_add(global.upgrades, "Suit", 0);
 ds_map_add(global.upgrades, "Wings", 0);
 ds_map_add(global.upgrades, "Flippers", 0);
-ds_map_add(global.upgrades, "Floaters", 0);
+ds_map_add(global.upgrades, "Floaties", 0);
 room_goto_next();
 
 ini_open("savedata.ini");
@@ -435,7 +447,7 @@ global.upgrades[? "Broccoli"] = ini_read_real("save", "Broccoli", 0);
 global.upgrades[? "Suit"] = ini_read_real("save", "Suit", 0);
 global.upgrades[? "Wings"] = ini_read_real("save", "Wings", 0);
 global.upgrades[? "Flippers"] = ini_read_real("save", "Flippers", 0);
-global.upgrades[? "Floaters"] = ini_read_real("save", "Floaters", 0);
+global.upgrades[? "Floaties"] = ini_read_real("save", "Floaties", 0);
 global.cash = ini_read_real("save", "Cash", 0);
 global.maxL = ini_read_real("save", "MaxL", 0);
 global.maxH = ini_read_real("save", "MaxH", 0);

@@ -19,7 +19,7 @@ if (name == "Broccoli"){
         case 2: 
             return 1200;
         case 3: 
-            return 3000;
+            return 5000;
         case 4: 
             return 20000;
     }
@@ -37,7 +37,7 @@ if (name == "Suit"){
         case 3: 
             return 1700;
         case 4: 
-            return 3500;
+            return 15000;
     }
 }
 
@@ -51,25 +51,25 @@ if (name == "Wings"){
         case 2: 
             return 1000;
         case 3: 
-            return 1700;
+            return 2400;
         case 4: 
-            return 3500;
+            return 10000;
     }
 }
 
-if (name == "Floaters"){
-    val = global.upgrades[? "Floaters"];
+if (name == "Floaties"){
+    val = global.upgrades[? "Floaties"];
     switch (val){
         case 0: 
             return 200;
         case 1: 
             return 500;
         case 2: 
-            return 1000;
+            return 1100;
         case 3: 
-            return 1500;
+            return 2850;
         case 4: 
-            return 3000;
+            return 15000;
     }
 }
 
@@ -77,14 +77,14 @@ if (name == "Flippers"){
     val = global.upgrades[? "Flippers"];
     switch (val){
         case 0: 
-            return 350;
+            return 450;
         case 1: 
-            return 600;
+            return 800;
         case 2: 
-            return 1200;
+            return 1700;
         case 3: 
-            return 2000;
+            return 3000;
         case 4: 
-            return 3500;
+            return 50000;
     }
 }

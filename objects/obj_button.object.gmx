@@ -73,7 +73,7 @@ else if (upgrade == "ResetConfirm"){
     global.upgrades[? "Suit"] = 0;
     global.upgrades[? "Wings"] = 0;
     global.upgrades[? "Flippers"] = 0;
-    global.upgrades[? "Floaters"] = 0;  
+    global.upgrades[? "Floaties"] = 0;  
     global.cash = 0;
     global.maxL = 0;
     global.maxH = 0;

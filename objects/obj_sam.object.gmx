@@ -93,7 +93,7 @@ if (instance_exists(obj_roo)){
         isGrabbing = 0;
         closest.isGrabbed = 0;
     }
-    if (point_distance(closest.x, closest.y, target_x, target_y) &lt; 30 &amp;&amp; mouse_check_button(mb_left) || isGrabbing){
+    if (!closest.isLaunched &amp;&amp; (point_distance(closest.x, closest.y, target_x, target_y) &lt; 30 &amp;&amp; mouse_check_button(mb_left) || isGrabbing)){
         closest.x = target_x;
         closest.y = target_y;
         closest.isGrabbed = 1;

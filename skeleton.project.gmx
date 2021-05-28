@@ -29,10 +29,16 @@
     <sprite>sprites\spr_character_ext</sprite>
     <sprite>sprites\spr_roo</sprite>
     <sprite>sprites\spr_roo_duck</sprite>
-    <sprite>sprites\spr_roo_floaters</sprite>
+    <sprite>sprites\spr_roo_glue</sprite>
+    <sprite>sprites\spr_roo_floaties</sprite>
+    <sprite>sprites\spr_roo_floaties_jade</sprite>
+    <sprite>sprites\spr_roo_wings</sprite>
     <sprite>sprites\spr_roo_side</sprite>
-    <sprite>sprites\spr_roo_side_floaters</sprite>
+    <sprite>sprites\spr_roo_side_floaties</sprite>
+    <sprite>sprites\spr_roo_side_floaties_jade</sprite>
     <sprite>sprites\spr_roo_duck_side</sprite>
+    <sprite>sprites\spr_roo_glue_side</sprite>
+    <sprite>sprites\spr_roo_wings_side</sprite>
     <sprite>sprites\spr_cloud</sprite>
     <sprite>sprites\spr_bouncy</sprite>
     <sprite>sprites\spr_button</sprite>
@@ -42,8 +48,11 @@
       <sprite>sprites\spr_jade_broccoli</sprite>
       <sprite>sprites\spr_duck</sprite>
       <sprite>sprites\spr_wings</sprite>
-      <sprite>sprites\spr_floaters</sprite>
+      <sprite>sprites\spr_angel_wings</sprite>
+      <sprite>sprites\spr_floaties</sprite>
+      <sprite>sprites\spr_floaties_glow</sprite>
       <sprite>sprites\spr_flippers</sprite>
+      <sprite>sprites\spr_glueba</sprite>
       <sprite>sprites\spr_reset</sprite>
       <sprite>sprites\spr_arrow</sprite>
     </sprites>

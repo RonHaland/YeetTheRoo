@@ -53,7 +53,7 @@
     if (instance_exists(obj_roo)){rooL = instance_find(obj_roo,0).l}
         do{
         i++;
-        next = room_width + 350 * (rooL/800) + random(700 + 100 * i);
+        next = room_width + min(200 * (rooL/750), room_width*3) + random(700 + 100 * i);
         var dist = 501;
         if (instance_number(obj_bouncy)&gt;0){
             var closest = instance_nearest(next, y, obj_bouncy);
@@ -89,7 +89,12 @@
     hit = 1;
     with (other){
         tvspeed = -abs(tvspeed * bounce)
-        if (thspeed &lt; 20)
+        if (tvspeed &gt; -10){
+            tvspeed = -10
+        }
+        if (global.upgrades[? "Floaties"] == 5)
+            thspeed += 10;
+        else if (thspeed &lt; 20)
             thspeed += 3.5;
     }
 }
