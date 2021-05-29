@@ -196,7 +196,7 @@ if (isLaunched){
     if (direction &gt;= 270 &amp;&amp; direction &lt; 340){
         //speedup
         thspeed += 0.008 * global.upgrades[? "Wings"] * fpsX;
-        thspeed = min(thspeed, topLaunchSpeed)
+        thspeed = min(thspeed, topLaunchSpeed*1.5);
     }
     vspeed = tvspeed*fpsX;
     hspeed = thspeed*fpsX;
@@ -243,7 +243,7 @@ if (tspeed &lt; 50){
     }
     if (isDuck){
         if (isGlue)
-            draw_sprite_ext(spr_roo_glue, 0, x, y, 1, 1, direction, c_white, 1);
+            draw_sprite_ext(spr_roo_glue, 0, x, y, 1, 1, rot, c_white, 1);
         else
             draw_sprite_ext(spr_roo_duck, imgInd, x, y, 1, 1, rot, c_white, 1);
     }else{

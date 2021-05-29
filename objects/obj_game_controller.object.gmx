@@ -272,6 +272,10 @@ if (room == rm_upgrades){
         btnSuit.text = "Flippers#Press Space to JUMP";
         btnSuit.upgrade = "Flippers";
         btnSuit.cost = get_cost("Flippers");
+        if (flippers == 4){
+            btnSuit.icon = spr_flippers_max;
+            btnSuit.text = "Blue flippers#burst of speed";
+        }
     }
     var flt = global.upgrades[? "Floaties"];
     

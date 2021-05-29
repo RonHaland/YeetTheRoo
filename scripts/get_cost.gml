@@ -85,6 +85,6 @@ if (name == "Flippers"){
         case 3: 
             return 3000;
         case 4: 
-            return 50000;
+            return 28000;
     }
 }

@@ -52,6 +52,7 @@
       <sprite>sprites\spr_floaties</sprite>
       <sprite>sprites\spr_floaties_glow</sprite>
       <sprite>sprites\spr_flippers</sprite>
+      <sprite>sprites\spr_flippers_max</sprite>
       <sprite>sprites\spr_glueba</sprite>
       <sprite>sprites\spr_reset</sprite>
       <sprite>sprites\spr_arrow</sprite>
